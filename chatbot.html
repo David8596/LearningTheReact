@@ -13,9 +13,55 @@
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
+        function ChatInput(){
+          return (
+            <>
+            <input 
+              
+              placeholder="Send a message to ChatBot" 
+              size="30"/>
+            <button>Send</button>
+            </>
+          );
+        }
+
+        function ChatMessage({ message, sender}){
+          return (
+            <div>
+              {sender === 'robot' && <img src="images/robot.ico" width="50"/>}
+              {message}
+              {sender === 'user' && <img src="images/user.ico" width="50"/>}
+            </div>
+          );
+        }
+
+        function App(){
+          return (
+            <>
+              <ChatInput />
+              <ChatMessage 
+                message="Hi" 
+                sender="user"
+              />
+              <ChatMessage 
+                message="Hello, how can I help you?" 
+                sender="robot"
+              />
+              <ChatMessage 
+                message="Can you me todays date?" 
+                sender="user"
+              />
+              <ChatMessage 
+                message="Today is March 17" 
+                sender="robot"
+              />
+
+            </>
+          );
+        }
         const container = document.querySelector('.js-container');
 
-        ReactDOM.createRoot(container).render();
+        ReactDOM.createRoot(container).render(<App />);
     </script>
   </body>
 </html>
